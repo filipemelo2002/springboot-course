@@ -1,10 +1,15 @@
 package com.company.test.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class Person implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "fullName")
     private String name;
     private String email;
 
