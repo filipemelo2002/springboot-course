@@ -9,17 +9,15 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        Person p1 = new Person(null, "Test", "test@gmail.com");
-
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("example-jpa");
         EntityManager em = emf.createEntityManager();
+        Person p = em.find(Person.class, 2);
 
-        em.getTransaction().begin();
-        em.persist(p1);
-        em.getTransaction().commit();
+        System.out.println(p);
 
         System.out.println("Finished!");
 
+        em.close();
     }
 }
